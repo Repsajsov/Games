@@ -1,8 +1,10 @@
 #include "menuState.h"
 
-std::unique_ptr<State> MenuState::update(Game &game) {
+int MenuState::update(Game &game) {
   if (IsKeyPressed(KEY_E)) {
-    return nullptr;
+    return GAME;
   }
-  return nullptr;
+  return MENU;
 }
+
+void MenuState::draw(Game &game) { DrawText("Menu", 100, 100, 20, BLACK); }
