@@ -1,4 +1,7 @@
 #include "gameState.h"
+#include "../ball.h"
+
+GameState::GameState() : ball() {}
 
 int GameState::update(Game &game) {
   if (IsKeyPressed(KEY_Q)) {
@@ -6,7 +9,13 @@ int GameState::update(Game &game) {
   } else if (IsKeyPressed(KEY_E)) {
     return END;
   }
+  ball.update();
+  
   return GAME;
+
 }
 
-void GameState::draw(Game &game) { DrawText("Game", 100, 100, 20, BLACK); }
+void GameState::draw(Game &game) { 
+  DrawText("Game", 100, 100, 20, BLACK);
+  ball.draw();
+}

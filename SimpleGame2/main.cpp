@@ -3,12 +3,7 @@
 #include "States/menuState.h"
 #include "States/state.h"
 #include <raylib.h>
-
-int SCREEN_WIDTH = 800;
-int SCREEN_HEIGHT = 450;
-int FPS = 60;
-char GAME_NAME[] = "SimpleGame2";
-const int STATE_COUNT = 3;
+#include "config.h"
 
 class Game {
 public:
@@ -24,7 +19,7 @@ public:
     }
   }
   void run() {
-    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_NAME);
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_TITLE);
     SetTargetFPS(FPS);
 
     int newStateIndex;

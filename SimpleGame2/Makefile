@@ -2,7 +2,7 @@ CC = g++
 CFLAGS = -std=c++11 -Wall -g
 LIBS = -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
-SOURCES = main.cpp States/menuState.cpp States/gameState.cpp States/endState.cpp
+SOURCES = main.cpp Utilities/random_generator.cpp ball.cpp States/menuState.cpp States/gameState.cpp States/endState.cpp 
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
