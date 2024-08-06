@@ -2,7 +2,8 @@
 #include "../ball.h"
 #include "state.h"
 
-class GameState : public State {
+class GameState : public State
+{
 public:
   GameState();
   int update(Game &game) override;
@@ -10,6 +11,4 @@ public:
 
 private:
   Ball ball;
-  int score;
-  int lives;
 };

@@ -1,12 +1,19 @@
 #pragma once
 #include "raylib.h"
 #include <memory>
+#include "../config.h"
 
-enum StateType { MENU, GAME, END };
+enum StateType
+{
+  MENU,
+  GAME,
+  END
+};
 
 class Game;
 
-class State {
+class State
+{
 public:
   virtual ~State() = default;
   virtual int update(Game &game) = 0;
