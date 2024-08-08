@@ -1,7 +1,8 @@
 #pragma once
 
 #include "state.h"
-#include "../Components/start.h"
+#include "../Components/button.h"
+
 class MenuState : public State
 {
 public:
@@ -10,5 +11,7 @@ public:
   void draw(Game &game) override;
 
 private:
-  Start start;
+  Button startButton;
+  Button quitButton;
+  Button highscoreButton;
 };
