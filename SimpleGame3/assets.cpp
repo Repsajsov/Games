@@ -14,7 +14,7 @@ void Apple::draw()
     DrawRectangleRec(rect, GREEN);
 }
 
-Snake::Snake(float x, float y, float width, float height) : rects{{x, y, width, height}}, color{RED}, elapsedTime{0}
+Snake::Snake(float x, float y, float width, float height) : rects{{x, y, width, height}}, elapsedTime{0}, color{RED}, isAdded{false}
 {
     directionMap["LEFT"] = {-1, 0};
     directionMap["RIGHT"] = {1, 0};
@@ -22,7 +22,7 @@ Snake::Snake(float x, float y, float width, float height) : rects{{x, y, width, 
     directionMap["DOWN"] = {0, 1};
 }
 
-Rectangle Snake::getRect() { return rects[0]; }
+std::deque<Rectangle> Snake::getRect() { return rects; }
 
 Color Snake::getColor() { return color; }
 
@@ -48,32 +48,29 @@ void Snake::inputHandling()
 
 void Snake::add()
 {
-    // Rectangle temp = rects[rects.size()];
-    // rects.push_back(temp);
+    isAdded = true;
 }
-
 void Snake::update(double deltaTime)
 {
     inputHandling();
     elapsedTime += deltaTime;
     if (elapsedTime >= 0.25)
     {
-        Rectangle temp;
-        for (size_t i = rects.size() - 1; i > 0; --i)
+        Rectangle newHead = {rects.front().x + (direction.x * 50), rects.front().y + (direction.y * 50), 50, 50};
+        rects.push_front(newHead);
+        if (!isAdded)
         {
-            temp = rects[i];
-            rects[i + 1] = temp;
+            rects.pop_back();
         }
-        rects[0].x += direction.x * 50;
-        rects[0].y += direction.y * 50;
+        isAdded = false;
         elapsedTime = 0;
     }
 }
 
 void Snake::draw()
 {
-    for (auto it = rects.begin(); it != rects.end(); ++it)
+    for (size_t i = 0; i < rects.size(); ++i)
     {
-        DrawRectangleRec(*it, color);
+        DrawRectangleRec(rects[i], color);
     }
 }

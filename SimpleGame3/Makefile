@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -std=c++11 -Wall -g
+CFLAGS = -std=c++14 -Wall -g
 LIBS = -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo -lraylib
 SOURCES = main.cpp assets.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
